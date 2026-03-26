@@ -109,4 +109,38 @@
             isNewNumber = true;
         }
 
-  - 
+  ## 실행 화면 (과제3)
+- 과제3 코드의 실행 스크린샷
+![과제3 실행화면](img/screenshot-3.png)
+- 과제 내용
+- C 버튼
+- Del 버튼
+- CE 버튼
+- 
+- 구현 내용과 기능 설명
+- c버튼의 클릭 핸들러를 이용하여 txtCalculation.Text와 txtResult.Text를 초기화하도록 구현하였다. del 버튼의 클릭 핸들러에서는 currentNumber의 마지막 문자를 제거하도록 구현하였다. ce 버튼의 클릭 핸들러에서는 currentNumber를 초기화하도록 구현하였다. 각각의 코드는 다음과 같다.
+-  private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtCalculation.Text = "";
+            txtResult.Text = "";
+            currentNumber = "";
+            num1 = 0;
+            num2 = 0;
+            op = "";
+        }
+
+- private void btnDel_Click(object sender, EventArgs e)
+        {
+            // 현재 입력값이 있을 때만
+            if (txtResult.Text.Length > 0 && txtCalculation.Text.Length > 0)
+            {
+                txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 1);
+                txtCalculation.Text = txtCalculation.Text.Substring(0, txtCalculation.Text.Length - 1);
+            }
+        }
+
+- private void btnCE_Click(object sender, EventArgs e)
+        {
+            txtResult.Text = "";   
+            currentNumber = "";  
+        }

@@ -210,6 +210,7 @@
             btnBackSpace.TabIndex = 14;
             btnBackSpace.Text = "del";
             btnBackSpace.UseVisualStyleBackColor = true;
+            btnBackSpace.Click += btnDel_Click;
             // 
             // btnClearEntry
             // 
@@ -220,6 +221,7 @@
             btnClearEntry.TabIndex = 15;
             btnClearEntry.Text = "CE";
             btnClearEntry.UseVisualStyleBackColor = true;
+            btnClearEntry.Click += btnCE_Click;
             // 
             // btnDivision
             // 

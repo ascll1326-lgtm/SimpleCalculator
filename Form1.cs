@@ -86,7 +86,26 @@ namespace SimpleCalculator
         }
         private void btnClear_Click(object sender, EventArgs e)
         {
-            
+            txtCalculation.Text = "";
+            txtResult.Text = "";
+            currentNumber = "";
+            num1 = 0;
+            num2 = 0;
+            op = "";
+        }
+        private void btnDel_Click(object sender, EventArgs e)
+        {
+            // 현재 입력값이 있을 때만
+            if (txtResult.Text.Length > 0 && txtCalculation.Text.Length > 0)
+            {
+                txtResult.Text = txtResult.Text.Substring(0, txtResult.Text.Length - 1);
+                txtCalculation.Text = txtCalculation.Text.Substring(0, txtCalculation.Text.Length - 1);
+            }
+        }
+        private void btnCE_Click(object sender, EventArgs e)
+        {
+            txtResult.Text = "";   // 현재 입력값 삭제
+            currentNumber = "";   // 입력값 초기화
         }
         private void txtCalculation_TextChanged(object sender, EventArgs e)
         {
