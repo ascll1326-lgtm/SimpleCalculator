@@ -15,24 +15,41 @@ namespace SimpleCalculator
         double num1, num2 = 0;
         string op = "";
         string currentNumber = "";
+        bool isNewNumber = false;
         private void NumberButton_Click(object sender, EventArgs e)
         {
-            if (sender is System.Windows.Forms.Button btn)
-            {
-                currentNumber += btn.Text;
+            System.Windows.Forms.Button btn = (System.Windows.Forms.Button)sender;
+            if (isNewNumber)
+                {
+                    currentNumber = btn.Text;
+                    isNewNumber = false;
+                }
+                else
+                {
+                    currentNumber += btn.Text;
+                }
+
                 txtCalculation.Text += btn.Text;
-            }
+            txtResult.Text += btn.Text;
+                
+            
+            
         }
 
         private void OperatorButton_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Button btn = (System.Windows.Forms.Button)sender;
 
+            
+
             num1 = double.Parse(currentNumber);
             op = btn.Text;
 
             txtCalculation.Text += " " + op + " ";
-            currentNumber = "";
+
+            txtResult.Text = "";
+
+            isNewNumber = true;
         }
 
         private void btnEqual_Click(object sender, EventArgs e)
@@ -46,10 +63,26 @@ namespace SimpleCalculator
                 case "+":
                     result = num1 + num2;
                     break;
-                
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "×":
+                    result = num1 * num2;
+                    break;
+                case "÷":
+                    if (num2 == 0)
+                    {
+                        MessageBox.Show("0으로 나눌 수 없습니다!");
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+
             }
             txtCalculation.Text += " = " + result.ToString();
             txtResult.Text = result.ToString();
+            currentNumber = result.ToString();
+            isNewNumber = true;
         }
         private void btnClear_Click(object sender, EventArgs e)
         {

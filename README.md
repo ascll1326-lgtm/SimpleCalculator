@@ -52,3 +52,61 @@
 
 
 
+        ## 실행 화면 (과제2)
+- 과제2 코드의 실행 스크린샷
+![과제2 실행화면](img/20260326_175410.gif)
+- 과제 내용
+- 1. 뺄셈(-), 곱셈(*), 나눗셈(/) 버튼 추가
+2. 이벤트 연결
+- 구현 내용과 기능 설명
+  - 각각의 연산기호들을 OperatorButton_Click이라는 핸들러에 연결하여 currentNumber에 저장된 숫자와 연산기호를 각각 num1과 op라는 변수에 저장하도록 구현하였다. 그리고 = 버튼의 핸들러에서 switch문을 이용하여 각각의 연산이 수행되도록 구현하였다. 코드는 다음과 같다.
+  - private void OperatorButton_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Button btn = (System.Windows.Forms.Button)sender;
+
+            
+
+            num1 = double.Parse(currentNumber);
+            op = btn.Text;
+
+            txtCalculation.Text += " " + op + " ";
+
+            txtResult.Text = "";
+
+            isNewNumber = true;
+        }
+
+        private void btnEqual_Click(object sender, EventArgs e)
+        {
+            num2 = double.Parse(currentNumber);
+
+            double result = 0;
+
+            switch (op)
+            {
+                case "+":
+                    result = num1 + num2;
+                    break;
+                case "-":
+                    result = num1 - num2;
+                    break;
+                case "×":
+                    result = num1 * num2;
+                    break;
+                case "÷":
+                    if (num2 == 0)
+                    {
+                        MessageBox.Show("0으로 나눌 수 없습니다!");
+                        return;
+                    }
+                    result = num1 / num2;
+                    break;
+
+            }
+            txtCalculation.Text += " = " + result.ToString();
+            txtResult.Text = result.ToString();
+            currentNumber = result.ToString();
+            isNewNumber = true;
+        }
+
+  - 
